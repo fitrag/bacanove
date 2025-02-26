@@ -7,11 +7,12 @@ const NovelUpdate = () => {
   const [loading, setLoading] = useState(true); // State for loading
   const [error, setError] = useState(null); // State for error
 
+  const URL = 'http://127.0.0.1:8000/api/public/novels'
   // Fetch data from API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/public/novels');
+        const response = await fetch(URL);
         if (!response.ok) {
           throw new Error('Failed to fetch novels');
         }
@@ -47,7 +48,7 @@ const NovelUpdate = () => {
 
       {/* Display Novels */}
       {!loading && !error && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
           {novels.length > 0 ? (
             novels.map((novel) => (
               <div
